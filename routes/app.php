@@ -15,7 +15,79 @@ use Illuminate\Support\Facades\Route;
 // Dashboard
 Route::prefix('/dashboard')
     ->name('dashboard.')
-    ->group(function () {});
+    ->group(function () {
+        Route::get('/users', App\Livewire\Dashboard\UserIndex::class)->name(
+            'users.index'
+        );
+
+        Route::get(
+            '/users/create',
+            App\Livewire\Dashboard\UserCreate::class
+        )->name('users.create');
+
+        Route::get(
+            '/users/{user}',
+            App\Livewire\Dashboard\UserEdit::class
+        )->name('users.edit');
+
+        Route::get('/tours', App\Livewire\Dashboard\TourIndex::class)->name(
+            'tours.index'
+        );
+
+        Route::get(
+            '/tours/create',
+            App\Livewire\Dashboard\TourCreate::class
+        )->name('tours.create');
+
+        Route::get(
+            '/tours/{tour}',
+            App\Livewire\Dashboard\TourEdit::class
+        )->name('tours.edit');
+
+        Route::get(
+            '/reservations',
+            App\Livewire\Dashboard\ReservationIndex::class
+        )->name('reservations.index');
+
+        Route::get(
+            '/reservations/create',
+            App\Livewire\Dashboard\ReservationCreate::class
+        )->name('reservations.create');
+
+        Route::get(
+            '/reservations/{reservation}',
+            App\Livewire\Dashboard\ReservationEdit::class
+        )->name('reservations.edit');
+
+        Route::get('/reviews', App\Livewire\Dashboard\ReviewIndex::class)->name(
+            'reviews.index'
+        );
+
+        Route::get(
+            '/reviews/create',
+            App\Livewire\Dashboard\ReviewCreate::class
+        )->name('reviews.create');
+
+        Route::get(
+            '/reviews/{review}',
+            App\Livewire\Dashboard\ReviewEdit::class
+        )->name('reviews.edit');
+
+        Route::get(
+            '/categories',
+            App\Livewire\Dashboard\CategoryIndex::class
+        )->name('categories.index');
+
+        Route::get(
+            '/categories/create',
+            App\Livewire\Dashboard\CategoryCreate::class
+        )->name('categories.create');
+
+        Route::get(
+            '/categories/{category}',
+            App\Livewire\Dashboard\CategoryEdit::class
+        )->name('categories.edit');
+    });
 
 // API
 Route::prefix('/api')
