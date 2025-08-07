@@ -5,7 +5,7 @@
                 "uuid": "a3702e17-33b6-4b07-af94-676904f7f167",
                 "id": 1,
                 "createdAt": "2025-08-07 17:43:37",
-                "updatedAt": "2025-08-07 18:25:14",
+                "updatedAt": "2025-08-07 18:34:56",
                 "settings": {
                     "cssFramework": "tailwind",
                     "uiStarterKit": "breeze",
@@ -25,7 +25,7 @@
                     "schemaReaderDbDatabase": "vemto_schema_reader",
                     "laravelVersion": "12.0"
                 },
-                "canShowSchemaSourceChangesAlert": false,
+                "canShowSchemaSourceChangesAlert": true,
                 "codeGenerationSettings": {
                     "models": true,
                     "factories": true,
@@ -161,9 +161,9 @@
                 },
                 "vthemeCdn": "https://cdn.tailwindcss.com",
                 "connectionFinished": true,
-                "canIgnoreNextSchemaSourceChanges": true,
+                "canIgnoreNextSchemaSourceChanges": false,
                 "filesQueueStatus": "idle",
-                "lastReadSchemaDataHash": "b782beb4b21cff63283a062d3b89e2ac",
+                "lastReadSchemaDataHash": "f91d91e9a6aa2795eb0970f6bd706d81",
                 "currentSchemaError": null,
                 "currentSchemaErrorStack": null,
                 "currentRenderedFilesPaths": [

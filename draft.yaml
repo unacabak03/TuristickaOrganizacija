@@ -1,0 +1,59 @@
+models:
+  User:
+    name: string
+    email: string unique
+    email_verified_at: timestamp nullable
+    phone_number: string
+    role: enum:user,admin,manager
+    password: string
+    remember_token: rememberToken
+    timestamps: true
+
+  Tour:
+    title: string
+    description: text
+    location: string
+    price: decimal
+    start_date: date
+    end_date: date
+    max_participants: integer nullable
+    timestamps: true
+
+  Category:
+    name: string
+    description: text
+    timestamps: true
+
+  Reservation:
+    user_id: id foreign:users
+    tour_id: id foreign:tours
+    status: enum:placed,confirmed,canceled
+    number_of_people: integer
+    timestamps: true
+
+  Review:
+    user_id: id foreign:users
+    tour_id: id foreign:tours
+    rating: integer
+    comment: string
+    timestamps: true
+
+  CategoryTour:
+    category_id: id foreign:categories
+    tour_id: id foreign:tours
+
+controllers:
+  User:
+    resource
+
+  Tour:
+    resource
+
+  Category:
+    resource
+
+  Reservation:
+    resource
+
+  Review:
+    resource

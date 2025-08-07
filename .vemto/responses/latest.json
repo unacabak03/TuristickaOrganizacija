@@ -2360,7 +2360,9 @@
             "fillable": [
                 "name",
                 "email",
-                "password"
+                "password",
+                "phone_number",
+                "role"
             ],
             "hasCasts": true,
             "casts": {
