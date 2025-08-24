@@ -5,7 +5,7 @@
                 "uuid": "a3702e17-33b6-4b07-af94-676904f7f167",
                 "id": 1,
                 "createdAt": "2025-08-07 17:43:37",
-                "updatedAt": "2025-08-07 18:34:56",
+                "updatedAt": "2025-08-24 23:59:36",
                 "settings": {
                     "cssFramework": "tailwind",
                     "uiStarterKit": "breeze",
@@ -25,7 +25,7 @@
                     "schemaReaderDbDatabase": "vemto_schema_reader",
                     "laravelVersion": "12.0"
                 },
-                "canShowSchemaSourceChangesAlert": true,
+                "canShowSchemaSourceChangesAlert": false,
                 "codeGenerationSettings": {
                     "models": true,
                     "factories": true,
@@ -1180,9 +1180,9 @@
                 },
                 "id": 9,
                 "createdAt": "2025-08-07 17:43:42",
-                "updatedAt": "2025-08-07 18:21:38",
-                "positionX": "-585.222",
-                "positionY": "86.3333",
+                "updatedAt": "2025-08-24 23:34:49",
+                "positionX": "-547",
+                "positionY": "127.429",
                 "sectionId": 1,
                 "removed": false
             },
@@ -1193,9 +1193,9 @@
                 "createdFromInterface": false,
                 "id": 10,
                 "createdAt": "2025-08-07 17:52:00",
-                "updatedAt": "2025-08-07 18:21:38",
-                "positionX": "-594",
-                "positionY": "-460.429",
+                "updatedAt": "2025-08-24 23:34:28",
+                "positionX": "-550.857",
+                "positionY": "-466",
                 "removed": false,
                 "migrations": [
                     {
@@ -1237,9 +1237,9 @@
                 "createdFromInterface": false,
                 "id": 12,
                 "createdAt": "2025-08-07 17:53:51",
-                "updatedAt": "2025-08-07 18:21:38",
-                "positionX": "-1045.11",
-                "positionY": "-97.6667",
+                "updatedAt": "2025-08-24 23:34:54",
+                "positionX": "-1099.29",
+                "positionY": "-95.1429",
                 "removed": false,
                 "migrations": [
                     {
@@ -1281,9 +1281,9 @@
                 "createdFromInterface": false,
                 "id": 13,
                 "createdAt": "2025-08-07 17:56:08",
-                "updatedAt": "2025-08-07 18:21:38",
-                "positionX": "-80.2222",
-                "positionY": "-111.333",
+                "updatedAt": "2025-08-24 23:34:37",
+                "positionX": "-31.4286",
+                "positionY": "-189.714",
                 "removed": false,
                 "migrations": [
                     {
@@ -1325,9 +1325,9 @@
                 "createdFromInterface": false,
                 "id": 14,
                 "createdAt": "2025-08-07 17:57:10",
-                "updatedAt": "2025-08-07 18:21:38",
-                "positionX": "-1380",
-                "positionY": "-448",
+                "updatedAt": "2025-08-24 23:46:51",
+                "positionX": "-1478",
+                "positionY": "-446.571",
                 "removed": false,
                 "migrations": [
                     {
@@ -1368,9 +1368,9 @@
                 "sectionId": 1,
                 "id": 15,
                 "createdAt": "2025-08-07 18:03:15",
-                "updatedAt": "2025-08-07 18:21:38",
-                "positionX": "-992",
-                "positionY": "-362",
+                "updatedAt": "2025-08-24 23:35:55",
+                "positionX": "-1022.57",
+                "positionY": "-344.429",
                 "removed": false,
                 "migrations": [
                     {
@@ -6075,13 +6075,13 @@
         "schema_sections": {
             "item_1": {
                 "name": "App",
-                "scrollX": 23776,
-                "scrollY": 24484,
+                "scrollX": 23747,
+                "scrollY": 24497,
                 "zoom": 70,
                 "projectId": 1,
                 "id": 1,
                 "createdAt": "2025-08-07 17:43:43",
-                "updatedAt": "2025-08-07 18:25:02"
+                "updatedAt": "2025-08-24 23:47:25"
             },
             "__tableData": {
                 "count": 2,
