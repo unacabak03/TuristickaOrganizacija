@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 // Dashboard
 Route::prefix('/dashboard')
     ->name('dashboard.')
+    ->middleware([
+        'auth:sanctum',
+        config('jetstream.auth_session'),
+        'verified',
+        \App\Http\Middleware\CheckRole::class . ':admin'
+    ])
     ->group(function () {
         Route::get('/users', App\Livewire\Dashboard\UserIndex::class)->name(
             'users.index'

@@ -11,6 +11,12 @@ class Tour extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'start_date' => 'date',
+        'end_date' => 'date',
+        'price' => 'decimal:2',
+    ];
+
     public function reservations()
     {
         return $this->hasMany(Reservation::class);

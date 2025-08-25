@@ -1180,9 +1180,9 @@
                 },
                 "id": 9,
                 "createdAt": "2025-08-07 17:43:42",
-                "updatedAt": "2025-08-24 23:34:49",
-                "positionX": "-547",
-                "positionY": "127.429",
+                "updatedAt": "2025-08-25 00:04:33",
+                "positionX": "-522.714",
+                "positionY": "188.429",
                 "sectionId": 1,
                 "removed": false
             },
@@ -1193,9 +1193,9 @@
                 "createdFromInterface": false,
                 "id": 10,
                 "createdAt": "2025-08-07 17:52:00",
-                "updatedAt": "2025-08-24 23:34:28",
-                "positionX": "-550.857",
-                "positionY": "-466",
+                "updatedAt": "2025-08-25 00:04:35",
+                "positionX": "-532",
+                "positionY": "-397.429",
                 "removed": false,
                 "migrations": [
                     {
@@ -1237,9 +1237,9 @@
                 "createdFromInterface": false,
                 "id": 12,
                 "createdAt": "2025-08-07 17:53:51",
-                "updatedAt": "2025-08-24 23:34:54",
-                "positionX": "-1099.29",
-                "positionY": "-95.1429",
+                "updatedAt": "2025-08-25 00:05:47",
+                "positionX": "-1026.43",
+                "positionY": "109.714",
                 "removed": false,
                 "migrations": [
                     {
@@ -1281,9 +1281,9 @@
                 "createdFromInterface": false,
                 "id": 13,
                 "createdAt": "2025-08-07 17:56:08",
-                "updatedAt": "2025-08-24 23:34:37",
-                "positionX": "-31.4286",
-                "positionY": "-189.714",
+                "updatedAt": "2025-08-25 00:05:49",
+                "positionX": "-19.5714",
+                "positionY": "-158.571",
                 "removed": false,
                 "migrations": [
                     {
@@ -1325,9 +1325,9 @@
                 "createdFromInterface": false,
                 "id": 14,
                 "createdAt": "2025-08-07 17:57:10",
-                "updatedAt": "2025-08-24 23:46:51",
-                "positionX": "-1478",
-                "positionY": "-446.571",
+                "updatedAt": "2025-08-25 00:06:19",
+                "positionX": "-1446.57",
+                "positionY": "-287",
                 "removed": false,
                 "migrations": [
                     {
@@ -1368,9 +1368,9 @@
                 "sectionId": 1,
                 "id": 15,
                 "createdAt": "2025-08-07 18:03:15",
-                "updatedAt": "2025-08-24 23:35:55",
-                "positionX": "-1022.57",
-                "positionY": "-344.429",
+                "updatedAt": "2025-08-25 00:06:18",
+                "positionX": "-1017.14",
+                "positionY": "-294",
                 "removed": false,
                 "migrations": [
                     {
