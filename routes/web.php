@@ -6,10 +6,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [TourController::class, 'home'])->name('homepage');
 
 Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
+    'auth',
     'verified',
-    \App\Http\Middleware\CheckRole::class . ':admin'
+    \App\Http\Middleware\CheckRole::class . ':admin:manager',
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');

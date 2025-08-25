@@ -138,13 +138,13 @@
     <img class="w3-image" src="{{ asset('images/header.jpg') }}" alt="Header" width="1500" height="700" style="border-radius: 14px;">
     <div class="w3-display-middle" style="width:65%">
         <div class="w3-bar w3-black">
-            <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'DateTab');">
+            <button class="w3-bar-item w3-button tablink" data-tab="DateTab" onclick="openLink(event, 'DateTab');">
                 <i class="fa fa-calendar w3-margin-right"></i>Datum
             </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'CategoryTab');">
+            <button class="w3-bar-item w3-button tablink" data-tab="CategoryTab" onclick="openLink(event, 'CategoryTab');">
                 <i class="fa fa-tags w3-margin-right"></i>Kategorija
             </button>
-            <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'TripTab');">
+            <button class="w3-bar-item w3-button tablink" data-tab="TripTab" onclick="openLink(event, 'TripTab');">
                 <i class="fa fa-map-marker w3-margin-right"></i>Aranzman
             </button>
         </div>

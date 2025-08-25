@@ -11,7 +11,6 @@
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link rel="stylesheet" href="../../resources/css/app.css">
 
     <style>
         body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
@@ -30,24 +29,20 @@
 
         <div class="w3-right">
             @auth
-                @if(auth()->user()->role === 'user')
-                    <a href="{{ route('client.services.create') }}" class="w3-bar-item w3-button w3-hover-red">Zakazivanje</a>
-                    <a href="{{ route('client.services.index') }}" class="w3-bar-item w3-button w3-hover-red">Moje usluge</a>
-                @elseif(auth()->user()->role === 'manager')
-                    <a href="{{ route('employee.services.index') }}" class="w3-bar-item w3-button w3-hover-red">Usluge za obradu</a>
-                @endif
-
-                @if(in_array(auth()->user()->role, ['admin']))
-                    <a href="{{ route('dashboard') }}" class="w3-bar-item w3-button w3-hover-red">Dashboard</a>
-                @endif
-
                 <form method="POST" action="{{ route('logout') }}" class="w3-bar-item" style="display:inline;">
                     @csrf
                     <button type="submit" class="w3-button w3-red">Logout</button>
                 </form>
             @else
-                <a href="{{ route('login') }}" class="w3-bar-item w3-button w3-hover-red w3-text-grey" style="height: 66px;">
+                <a href="{{ route('login') }}" 
+                class="w3-bar-item w3-button w3-hover-red w3-text-grey" 
+                style="height: 66px;">
                     <i class="fa fa-sign-in"></i> Login
+                </a>
+                <a href="{{ route('register') }}" 
+                class="w3-bar-item w3-button w3-hover-red w3-text-grey" 
+                style="height: 66px;">
+                    <i class="fa fa-user-plus"></i> Register
                 </a>
             @endauth
         </div>
@@ -62,7 +57,11 @@
     @endif
 
     <div class="w3-content" style="max-width:1400px;">
-        @yield('content')
+        @if (trim($__env->yieldContent('content')))
+            @yield('content')
+        @else
+            {{ $slot ?? '' }}
+        @endif
     </div>
 
     <footer class="w3-container w3-center w3-opacity w3-margin-bottom">
@@ -96,6 +95,43 @@
         var first = document.getElementsByClassName("tablink")[0];
         if (first) first.click();
     });
+    </script>
+
+    <script>
+    function openLink(evt, linkName) {
+        var x = document.getElementsByClassName("myLink");
+        for (var i = 0; i < x.length; i++) { x[i].style.display = "none"; }
+        var tablinks = document.getElementsByClassName("tablink");
+        for (var j = 0; j < tablinks.length; j++) {
+        tablinks[j].className = tablinks[j].className.replace(" w3-red", "").replace(" active", "");
+        }
+        var active = document.getElementById(linkName);
+        if (active) active.style.display = "block";
+        if (evt && evt.currentTarget) evt.currentTarget.className += " active";
+    }
+
+    function initSearchTabs() {
+        var btns = document.getElementsByClassName('tablink');
+        var panels = document.getElementsByClassName('myLink');
+        if (!btns.length || !panels.length) return;
+
+        for (var i=0;i<panels.length;i++) panels[i].style.display = 'none';
+        for (var j=0;j<btns.length;j++) btns[j].classList.remove('active');
+
+        var type = new URLSearchParams(window.location.search).get('type');
+        var map = { 'date':'DateTab', 'category':'CategoryTab', 'trip':'TripTab' };
+        var targetId = map[type] || 'DateTab';
+
+        var active = document.getElementById(targetId);
+        if (active) active.style.display = 'block';
+
+        var matchBtn = Array.prototype.find.call(btns, function(b){ return b.dataset.tab === targetId; });
+        if (matchBtn) matchBtn.classList.add('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', initSearchTabs);
+
+    window.addEventListener('livewire:navigated', initSearchTabs);
     </script>
 
     @stack('scripts')
