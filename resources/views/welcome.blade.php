@@ -130,6 +130,8 @@
         font-weight: 600;
         text-align: left;
     }
+
+    .tour-card__inner .w3-light-grey { margin-top: 4px; }
 </style>
 @endpush
 
@@ -211,7 +213,11 @@
             @foreach($results as $tour)
                 <div class="w3-card w3-white w3-hover-shadow tour-card">
                     <div class="tour-card__inner">
-                        <h4 class="tour-title">{{ $tour->title }}</h4>
+                        <h4 class="tour-title">
+                            <a href="{{ route('tours.show', $tour) }}" class="w3-text-black w3-hover-text-red">
+                                {{ $tour->title }}
+                            </a>
+                        </h4>
 
                         <p class="w3-opacity tour-loc">
                             <i class="fa fa-map-marker"></i>
@@ -227,14 +233,34 @@
                             <b>{{ number_format((float)$tour->price, 2, ',', '.') }} RSD</b>
                         </p>
 
-                        <p class="w3-small tour-desc">
-                            {{ $tour->description }}
-                        </p>
+                        @php
+                            $cap = (int) ($tour->max_participants ?? 0);
+                            $res = (int) ($tour->reserved_people ?? 0);
+                            $pct = $cap > 0 ? min(100, (int) round(($res * 100) / $cap)) : 0;
+                        @endphp
+
+                        @if($cap > 0)
+                            <div class="w3-small w3-text-gray" style="margin:4px 0 8px;">
+                                Rezervisano: <b>{{ $res }}</b> / {{ $cap }}
+                            </div>
+
+                            <div class="w3-light-grey w3-round" style="height:10px; overflow:hidden;">
+                                <div class="w3-orange" style="height:10px; width: {{ $pct }}%;"></div>
+                            </div>
+                        @endif
 
                         <div class="tour-spacer"></div>
                     </div>
 
-                    <a href="javascript:void(0)" class="reserve-cta">Rezerviši</a>
+                    @php
+                        $soldOut = !is_null($tour->max_participants) && (int)($tour->reserved_people ?? 0) >= (int)$tour->max_participants;
+                    @endphp
+
+                    <a href="{{ $soldOut ? 'javascript:void(0)' : route('reservation.create', $tour) }}"
+                    class="reserve-cta {{ $soldOut ? 'w3-opacity-max' : '' }}"
+                        @if($soldOut) aria-disabled="true" onclick="return false;" @endif>
+                        {{ $soldOut ? 'Rasprodato' : 'Rezerviši' }}
+                    </a>
                 </div>
             @endforeach
         </div>

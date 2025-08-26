@@ -29,6 +29,9 @@
 
         <div class="w3-right">
             @auth
+                <a href="{{ route('reservation.index') }}" class="w3-bar-item w3-button w3-hover-red w3-text-grey" style="height: 66px;">
+                    <i class="fa fa-list"></i> Moje rezervacije
+                </a>
                 <form method="POST" action="{{ route('logout') }}" class="w3-bar-item" style="display:inline;">
                     @csrf
                     <button type="submit" class="w3-button w3-red">Logout</button>
@@ -49,7 +52,7 @@
     </div>
 
     @if(session('success'))
-    <div class="w3-content" style="max-width:1100px;">
+    <div class="w3-content" style="max-width:1400px;">
         <div class="w3-panel w3-green w3-round w3-padding w3-margin-top">
             {{ session('success') }}
         </div>

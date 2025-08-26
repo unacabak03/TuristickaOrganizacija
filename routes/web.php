@@ -1,9 +1,17 @@
 <?php
 
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TourController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [TourController::class, 'home'])->name('homepage');
+Route::get('/tours/{tour}', [TourController::class, 'show'])->name('tours.show');
+
+Route::controller(TourController::class)->group(function () {
+    Route::get('/', 'home')->name('homepage');
+    Route::get('/tours/{tour}','show')->name('tours.show');
+});
 
 Route::middleware([
     'auth',
@@ -13,6 +21,22 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::name('reservation.')->prefix('/reservation')->group(function (){
+        Route::controller(ReservationController::class)->group(function () {
+            Route::get('/my', 'index')->name('index');
+            Route::get('/{tour}', 'create')->name('create');
+            Route::post('/{tour}','store')->name('store');
+            Route::post('/{reservation}/cancel', 'cancel')->name('cancel');
+        });
+
+        Route::controller(ReviewController::class)->group(function () {
+            Route::get('/{reservation}/review', 'create')->name('review.create');
+            Route::post('/{reservation}/review','store')->name('review');
+        });
+    });
 });
 
 Route::view('profile', 'profile')

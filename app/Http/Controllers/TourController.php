@@ -45,12 +45,37 @@ class TourController extends Controller
         } else {
             $tours->latest()->limit(3);
         }
+        $tours->withSum([
+            'reservations as reserved_people' => function ($q) {
+                $q->whereIn('status', ['placed', 'confirmed']);
+            }
+        ], 'number_of_people');
 
         $results = ($type ? $tours->latest()->get() : $tours->get());
 
         return view('welcome', [
             'results' => $results,
             'type'    => $type,
+        ]);
+    }
+
+    public function show(Tour $tour)
+    {
+        $reserved = $tour->reservations()
+            ->whereIn('status', ['placed', 'confirmed'])
+            ->sum('number_of_people');
+
+        $cap = $tour->max_participants;
+        $available = is_null($cap) ? null : max(0, (int)$cap - (int)$reserved);
+
+        $tour->load(['reviews.user'])
+            ->loadAvg('reviews', 'rating')
+            ->loadCount('reviews');
+
+        return view('tours.show', [
+            'tour'      => $tour,
+            'reserved'  => (int) $reserved,
+            'available' => $available,
         ]);
     }
 }
