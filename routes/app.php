@@ -18,7 +18,7 @@ Route::prefix('/dashboard')
     ->middleware([
         'auth',
         'verified',
-        \App\Http\Middleware\CheckRole::class . ':admin:manager',
+        \App\Http\Middleware\CheckRole::class . ':admin',
     ])
     ->group(function () {
         Route::get('/users', App\Livewire\Dashboard\UserIndex::class)->name(
@@ -50,19 +50,9 @@ Route::prefix('/dashboard')
         )->name('tours.edit');
 
         Route::get(
-            '/reservations',
-            App\Livewire\Dashboard\ReservationIndex::class
-        )->name('reservations.index');
-
-        Route::get(
             '/reservations/create',
             App\Livewire\Dashboard\ReservationCreate::class
         )->name('reservations.create');
-
-        Route::get(
-            '/reservations/{reservation}',
-            App\Livewire\Dashboard\ReservationEdit::class
-        )->name('reservations.edit');
 
         Route::get('/reviews', App\Livewire\Dashboard\ReviewIndex::class)->name(
             'reviews.index'
@@ -94,6 +84,23 @@ Route::prefix('/dashboard')
         )->name('categories.edit');
     });
 
+Route::prefix('/dashboard')
+    ->name('dashboard.')
+    ->middleware([
+        'auth',
+        'verified',
+        \App\Http\Middleware\CheckRole::class . ':admin:manager',
+    ])->group(function () {
+            Route::get(
+                '/reservations',
+                App\Livewire\Dashboard\ReservationIndex::class
+            )->name('reservations.index');
+
+            Route::get(
+                '/reservations/{reservation}',
+                App\Livewire\Dashboard\ReservationEdit::class
+            )->name('reservations.edit');
+        });
 // API
 Route::prefix('/api')
     ->name('api.')

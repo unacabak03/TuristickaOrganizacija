@@ -1,3 +1,4 @@
+@php $isManager = auth()->user()->role === 'manager'; @endphp
 <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8 space-y-4">
     <x-ui.breadcrumbs>
         <x-ui.breadcrumbs.link href="/dashboard"
@@ -34,6 +35,7 @@
                         name="user_id"
                         id="user_id"
                         class="w-full"
+                        :disabled="$isManager"
                     >
                         <option value="">Select data</option>
                         @foreach ($users as $value => $label)
@@ -53,6 +55,7 @@
                         name="tour_id"
                         id="tour_id"
                         class="w-full"
+                        :disabled="$isManager"
                     >
                         <option value="">Select data</option>
                         @foreach ($tours as $value => $label)
@@ -94,6 +97,7 @@
                         id="number_of_people"
                         placeholder="{{ __('crud.reservations.inputs.number_of_people.placeholder') }}"
                         step="1"
+                        :disabled="$isManager"
                     />
                     <x-ui.input.error for="form.number_of_people" />
                 </div>

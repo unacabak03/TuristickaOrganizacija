@@ -3,10 +3,9 @@
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TourController;
+use App\Models\Reservation;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', [TourController::class, 'home'])->name('homepage');
-Route::get('/tours/{tour}', [TourController::class, 'show'])->name('tours.show');
 
 Route::controller(TourController::class)->group(function () {
     Route::get('/', 'home')->name('homepage');
@@ -19,7 +18,15 @@ Route::middleware([
     \App\Http\Middleware\CheckRole::class . ':admin:manager',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $raw = Reservation::selectRaw('status, COUNT(*) as c')
+            ->groupBy('status')
+            ->pluck('c', 'status')
+            ->all();
+
+        $labels = ['placed', 'confirmed', 'canceled'];
+        $counts = array_map(fn($s) => Arr::get($raw, $s, 0), $labels);
+
+        return view('dashboard', compact('labels', 'counts'));
     })->name('dashboard');
 });
 

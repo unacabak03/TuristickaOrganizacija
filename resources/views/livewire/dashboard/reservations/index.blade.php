@@ -18,9 +18,11 @@
         />
 
         @can('create', App\Models\Reservation::class)
-        <a wire:navigate href="{{ route('dashboard.reservations.create') }}">
-            <x-ui.button>New</x-ui.button>
-        </a>
+            @if(auth()->user()->role === 'admin')
+                <a wire:navigate href="{{ route('dashboard.reservations.create') }}" >
+                    <x-ui.button>New</x-ui.button>
+                </a>
+            @endif
         @endcan
     </div>
 
@@ -90,16 +92,20 @@
                     >
                     <x-ui.table.action-column>
                         @can('update', $reservation)
-                        <x-ui.action
-                            wire:navigate
-                            href="{{ route('dashboard.reservations.edit', $reservation) }}"
-                            >Edit</x-ui.action
-                        >
+                            @if(in_array(auth()->user()->role, ['admin','manager']))
+                                <x-ui.action
+                                    wire:navigate
+                                    href="{{ route('dashboard.reservations.edit', $reservation) }}">
+                                    Edit
+                                </x-ui.action>
+                            @endif
                         @endcan @can('delete', $reservation)
-                        <x-ui.action.danger
-                            wire:click="confirmDeletion({{ $reservation->id }})"
-                            >Delete</x-ui.action.danger
-                        >
+                            @if(auth()->user()->role === 'admin')
+                                <x-ui.action.danger
+                                    wire:click="confirmDeletion({{ $reservation->id }})">
+                                    Delete
+                                </x-ui.action.danger>
+                            @endif
                         @endcan
                     </x-ui.table.action-column>
                 </x-ui.table.row>

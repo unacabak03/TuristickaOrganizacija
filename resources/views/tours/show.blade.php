@@ -70,7 +70,7 @@
         </p>
         <p><b>Cena:</b> {{ number_format((float)$tour->price, 2, ',', '.') }} RSD</p>
         @if($tour->max_participants)
-            <p><b>Maksimalno učesnika:</b> {{ $tour->max_participants }}</p>
+            <p><b>Maksimalno putnika:</b> {{ $tour->max_participants }}</p>
         @endif
     </div>
 </div>
