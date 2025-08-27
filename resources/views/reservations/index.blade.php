@@ -60,11 +60,6 @@
         </header>
 
         <div class="w3-container w3-padding-16">
-            @if (session('success'))
-                <div class="w3-panel w3-pale-green w3-leftbar w3-border-green w3-round">
-                    {{ session('success') }}
-                </div>
-            @endif
             @if ($errors->any())
                 <div class="w3-panel w3-pale-red w3-leftbar w3-border-red w3-round">
                     {{ $errors->first() }}
