@@ -29,7 +29,7 @@ class TourFactory extends Factory
             'price' => fake()->randomFloat(2, 0, 9999),
             'start_date' => fake()->date(),
             'end_date' => fake()->date(),
-            'max_participants' => fake()->randomNumber(0),
+            'max_participants' => fake()->randomNumber(),
         ];
     }
 }

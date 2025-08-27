@@ -23,7 +23,7 @@ class ReservationFactory extends Factory
     public function definition(): array
     {
         return [
-            'status' => 'placed',
+            'status' => $this->faker->randomElement(['placed','confirmed','canceled']),
             'number_of_people' => fake()->randomNumber(0),
             'user_id' => \App\Models\User::factory(),
             'tour_id' => \App\Models\Tour::factory(),

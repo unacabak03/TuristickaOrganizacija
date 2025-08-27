@@ -23,8 +23,8 @@ class ReviewFactory extends Factory
     public function definition(): array
     {
         return [
-            'rating' => fake()->randomFloat(1, 1, 5),
-            'comment' => fake()->text(),
+            'rating'  => $this->faker->numberBetween(1,5),
+            'comment' => $this->faker->sentence(8),
             'user_id' => \App\Models\User::factory(),
             'tour_id' => \App\Models\Tour::factory(),
         ];
