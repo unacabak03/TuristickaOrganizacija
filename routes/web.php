@@ -8,7 +8,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(TourController::class)->group(function () {
-    Route::get('/', 'home')->name('homepage');
+    Route::get('/', action: 'home')->name('homepage');
     Route::get('/tours/{tour}','show')->name('tours.show');
 });
 
@@ -17,17 +17,7 @@ Route::middleware([
     'verified',
     \App\Http\Middleware\CheckRole::class . ':admin:manager',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        $raw = Reservation::selectRaw('status, COUNT(*) as c')
-            ->groupBy('status')
-            ->pluck('c', 'status')
-            ->all();
-
-        $labels = ['placed', 'confirmed', 'canceled'];
-        $counts = array_map(fn($s) => Arr::get($raw, $s, 0), $labels);
-
-        return view('dashboard', compact('labels', 'counts'));
-    })->name('dashboard');
+    Route::get('/dashboard', [ReservationController::class, 'dashboard'])->name('dashboard');
 });
 
 Route::middleware('auth')->group(function () {

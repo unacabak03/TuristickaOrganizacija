@@ -2094,8 +2094,13 @@
             "traits": [
                 "Illuminate\\Database\\Eloquent\\Factories\\HasFactory"
             ],
-            "hasFillable": false,
-            "fillable": [],
+            "hasFillable": true,
+            "fillable": [
+                "user_id",
+                "tour_id",
+                "status",
+                "number_of_people"
+            ],
             "hasCasts": false,
             "casts": [],
             "hasGuarded": true,
@@ -2254,8 +2259,12 @@
             ],
             "hasFillable": false,
             "fillable": [],
-            "hasCasts": false,
-            "casts": [],
+            "hasCasts": true,
+            "casts": {
+                "start_date": "date",
+                "end_date": "date",
+                "price": "decimal:2"
+            },
             "hasGuarded": true,
             "guarded": [],
             "hasHidden": false,

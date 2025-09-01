@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reservation;
 use App\Models\Tour;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
@@ -93,5 +94,18 @@ class ReservationController extends Controller
         $reservation->update(['status' => 'canceled']);
 
         return back()->with('success', 'Rezervacija je uspešno otkazana.');
+    }
+
+    public function dashboard()
+    {
+        $raw = Reservation::selectRaw('status, COUNT(*) as c')
+            ->groupBy('status')
+            ->pluck('c', 'status')
+            ->all();
+
+        $labels = ['placed', 'confirmed', 'canceled'];
+        $counts = array_map(fn($s) => Arr::get($raw, $s, 0), $labels);
+
+        return view('dashboard', compact('labels', 'counts'));
     }
 }
